@@ -1,9 +1,8 @@
-# QT6 Renderer
+# QT6 Renderer Intellij Plugin
 
-The plugin for pretty printing [Qt][qt] types by [CLion][clion] debugger.
+A plugin for pretty printing [Qt][qt] types by [CLion][clion] and other compatible Intellij IDEs.
 
-[qt]: https://www.qt.io/
-[clion]: https://www.jetbrains.com/clion/
+The plugin wraps [Qt6Renderer][qt6renderer]. Bring up any problems there.
 
 ## Qt versions support
 * 6.x
@@ -11,10 +10,10 @@ The plugin for pretty printing [Qt][qt] types by [CLion][clion] debugger.
 See the note about some problems with 6.4.2 and below.
 
 ## Qt types support
-* [See here for lldb](./python/lldb)
-* [See here for gdb](./python/gdb)
+* [See here for gdb][qt6renderer_files_gdb]
+* [See here for lldb][qt6renderer_files_lldb]
 
-You can use the [example project](./example-project) for testsing.
+You can use the [example project][qt6renderer_exmpl] for testsing.
 
 ## Debuggers support
 * LLDB
@@ -84,3 +83,13 @@ For gdb, that looks like `{3, 7, 394754, 0, 0, 0, 22}`:
 For lldb, that looks like `02 07 06 00 00 00 00 00`:
 
 ![Have debug info lldb](images/debug_info_lldb_good.png)
+
+[qt]: https://www.qt.io/
+[gdb]: https://sourceware.org/gdb/
+[lldb]: https://lldb.llvm.org/
+[qt6renderer]: https://github.com/winseros/Qt6Renderer
+[qt6renderer_files_gdb]: https://github.com/winseros/Qt6Renderer/tree/master/python/gdb/qt6renderer
+[qt6renderer_files_lldb]: https://github.com/winseros/Qt6Renderer/tree/master/python/lldb/qt6renderer
+[qt6renderer_exmpl]: https://github.com/winseros/Qt6RendererExmpl
+[qt6renderer_intlj]: https://github.com/winseros/Qt6RendererIntlj
+[qt6renderer_vsc]: https://github.com/winseros/Qt6RendererVscj
