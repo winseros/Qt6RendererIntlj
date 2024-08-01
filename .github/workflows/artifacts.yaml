@@ -18,6 +18,8 @@ jobs:
           distribution: 'corretto'
 
       - uses: actions/checkout@v4
+        with:
+          submodules: true
 
       - name: Set Version - Main
         if: ${{startsWith(github.ref, 'refs/tags/v')}}
