@@ -1,8 +1,9 @@
 # QT6 Renderer Intellij Plugin
 
-A plugin for pretty printing [Qt][qt] types by [CLion][clion] and other compatible Intellij IDEs.
+The plugin for pretty printing [Qt][qt] types by [CLion][clion] and other compatible Intellij IDEs.
 
-The plugin wraps [Qt6Renderer][qt6renderer]. Bring up any problems there.
+> [!NOTE]
+> The plugin wraps [Qt6Renderer][qt6renderer]. Bring up any problems there.
 
 ## Qt versions support
 * 6.x
@@ -85,6 +86,7 @@ For lldb, that looks like `02 07 06 00 00 00 00 00`:
 ![Have debug info lldb](images/debug_info_lldb_good.png)
 
 [qt]: https://www.qt.io/
+[clion]: https://www.jetbrains.com/clion/
 [gdb]: https://sourceware.org/gdb/
 [lldb]: https://lldb.llvm.org/
 [qt6renderer]: https://github.com/winseros/Qt6Renderer
