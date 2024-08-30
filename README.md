@@ -33,11 +33,11 @@ You can use the [example project][qt6renderer_exmpl] for testsing.
 
 ## Requirements
 
-See at the [Qt6Renderer](https://github.com/winseros/Qt6Renderer/tree/master?tab=readme-ov-file#requirements).
+See at the [Qt6Renderer](https://github.com/winseros/Qt6Renderer?tab=readme-ov-file#requirements).
 
 ## Troubleshooting
 
-See at the [Qt6Renderer](https://github.com/winseros/Qt6Renderer/tree/master?tab=readme-ov-file#troubleshooting).
+See at the [Qt6Renderer](https://github.com/winseros/Qt6Renderer?tab=readme-ov-file#troubleshooting).
 
 [qt]: https://www.qt.io/
 [clion]: https://www.jetbrains.com/clion/
