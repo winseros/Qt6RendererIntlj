@@ -30,6 +30,7 @@ class LLDBRegistrar {
         registerSummary(debuggerDriver, threadId, frameIndex, "QBasicAtomicInt", false);
         registerBoth(debuggerDriver, threadId, frameIndex, "QBitArray", false);
         registerBoth(debuggerDriver, threadId, frameIndex, "QByteArray", false);
+        registerSynth(debuggerDriver, threadId, frameIndex, "QCborValue",false);
         registerSummary(debuggerDriver, threadId, frameIndex, "QChar", false);
         registerBoth(debuggerDriver, threadId, frameIndex, "QDate", false);
         registerBoth(debuggerDriver, threadId, frameIndex, "QDateTime", false);
@@ -38,6 +39,8 @@ class LLDBRegistrar {
         registerBoth(debuggerDriver, threadId, frameIndex, "QFile", false);
         registerBoth(debuggerDriver, threadId, frameIndex, "QFileInfo", false);
         registerSummary(debuggerDriver, threadId, frameIndex, "QFlags", true);
+        registerSynth(debuggerDriver, threadId, frameIndex, "QJsonObject",false);
+        registerBoth(debuggerDriver, threadId, frameIndex, "QJsonValue", false);
         registerBoth(debuggerDriver, threadId, frameIndex, "QHash", true);
         registerSummary(debuggerDriver, threadId, frameIndex, "QHostAddress", false);
         registerBoth(debuggerDriver, threadId, frameIndex, "QList", true);
@@ -47,6 +50,7 @@ class LLDBRegistrar {
         registerBoth(debuggerDriver, threadId, frameIndex, "QSharedPointer", true);
         registerBoth(debuggerDriver, threadId, frameIndex, "QSharedDataPointer", true);
         registerBoth(debuggerDriver, threadId, frameIndex, "QString", false);
+        registerBoth(debuggerDriver, threadId, frameIndex, "QtCbor::Element", false);
         registerBoth(debuggerDriver, threadId, frameIndex, "QTemporaryFile", false);
         registerBoth(debuggerDriver, threadId, frameIndex, "QTemporaryDir", false);
         registerBoth(debuggerDriver, threadId, frameIndex, "QTime", false);
