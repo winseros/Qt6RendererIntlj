@@ -39,7 +39,8 @@ class LLDBRegistrar {
         registerBoth(debuggerDriver, threadId, frameIndex, "QFile", false);
         registerBoth(debuggerDriver, threadId, frameIndex, "QFileInfo", false);
         registerSummary(debuggerDriver, threadId, frameIndex, "QFlags", true);
-        registerSynth(debuggerDriver, threadId, frameIndex, "QJsonObject",false);
+        registerBoth(debuggerDriver, threadId, frameIndex, "QJsonArray",false);
+        registerBoth(debuggerDriver, threadId, frameIndex, "QJsonObject",false);
         registerBoth(debuggerDriver, threadId, frameIndex, "QJsonValue", false);
         registerBoth(debuggerDriver, threadId, frameIndex, "QHash", true);
         registerSummary(debuggerDriver, threadId, frameIndex, "QHostAddress", false);
