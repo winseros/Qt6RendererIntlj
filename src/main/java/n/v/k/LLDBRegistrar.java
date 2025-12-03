@@ -28,6 +28,7 @@ class LLDBRegistrar {
 
         registerSummary(debuggerDriver, threadId, frameIndex, "QAtomicInt", false);
         registerSummary(debuggerDriver, threadId, frameIndex, "QBasicAtomicInt", false);
+        registerSummary(debuggerDriver, threadId, frameIndex, "QBasicAtomicInteger", true);
         registerBoth(debuggerDriver, threadId, frameIndex, "QBitArray", false);
         registerBoth(debuggerDriver, threadId, frameIndex, "QByteArray", false);
         registerSynth(debuggerDriver, threadId, frameIndex, "QCborValue",false);
