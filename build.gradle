@@ -1,5 +1,5 @@
 plugins {
-    id "org.jetbrains.intellij" version "1.16.1"
+    id "org.jetbrains.intellij" version "1.17.4"
     id "java"
 }
 
@@ -24,6 +24,10 @@ intellij {
 
 patchPluginXml {
     changeNotes = """
+      * 1.2.0
+      - QJson support for LLDB
+      - Minor render bug fixes
+      
       * 1.1.1
       - Minor render bug fixes
 
