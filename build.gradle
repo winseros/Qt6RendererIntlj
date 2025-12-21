@@ -30,7 +30,7 @@ if (hasProperty("clionLocalSandbox")) {
     logger.lifecycle "Using sandbox IDE at: ${clionLocalSandbox}"
     dependencies.intellijPlatform.local clionLocalSandbox
 } else {
-    def targetIdeVersion = "2025.3.1"
+    def targetIdeVersion = "2022.3"
     logger.lifecycle "Using the downloaded IDE: ${targetIdeVersion}"
     dependencies.intellijPlatform.clion targetIdeVersion
 }
@@ -80,7 +80,7 @@ intellijPlatform {
         """.stripIndent()
 
         ideaVersion {
-            sinceBuild = "213.6461"
+            sinceBuild = "223" //https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html#platformVersions
         }
 
         vendor {
