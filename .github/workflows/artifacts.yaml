@@ -9,15 +9,15 @@ on:
 jobs:
   release:
     name: Build
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
-      - name: Set up JDK 11
+      - name: Set up JDK
         uses: actions/setup-java@v4
         with:
-          java-version: '11'
-          distribution: 'corretto'
+          java-version: '25'
+          distribution: 'oracle'
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           submodules: true
 
@@ -38,4 +38,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Qt6Renderer-${{env.ORG_GRADLE_PROJECT_buildVersion}}
-          path: ${{github.workspace}}/build/idea-sandbox/plugins/*
+          path: ${{github.workspace}}/build/idea-sandbox/*/plugins/*
