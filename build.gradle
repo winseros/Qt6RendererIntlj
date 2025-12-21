@@ -40,44 +40,42 @@ intellijPlatform {
 
     pluginConfiguration {
         id = "${project.group}.${project.name}"
+        name = "Qt6 Renderer"
 
         description = """<pre>
         The plugin for pretty printing Qt types by CLion debugger.
-        
-        Supported Qt versions: 6.x.
-        Supported platforms: Windows, Linux.
-        Supported architectures: X64.
-        Supported debuggers: GDB, LLDB.</pre>
+        <br>
+        <uL>
+            <li>Supported Qt versions: 6.x.</li>
+            <li>Supported platforms: Windows, Linux.</li>
+            <li>Supported architectures: X64.</li>
+            <li>Supported debuggers: GDB, LLDB.</pre></li>
+        </ul>
         """.stripIndent()
 
         changeNotes = """
+        <strong>1.2.0</strong>
         <ul>
-            <li>
-                1.2.0
-                <ul>
-                    <li>QJson support for LLDB</li>
-                    <li>Render bug fixes</li>
-                </ul>
-            </li>
-            <li>
-                1.1.1
-                <ul>
-                    <li>Minor render bug fixes</li>
-                </ul>
-            </li>
-            <li>
-                1.1.0
-                <ul>
-                    <li>GDB support</li>
-                    <li>LLDB code rewritten</li>
-                </ul>
-            </li>  
-            <li>
-                1.0.0
-                <ul>
-                    <li>Initial version</li>
-                </ul>
-            </li>
+            <li>QJson support for LLDB</li>
+            <li>Render bug fixes</li>
+        </ul>        
+        <strong>1.1.1</strong>
+        <ul>
+            <li>Minor render bug fixes</li>
+        </ul>        
+        <strong>1.1.0</strong>
+        <ul>
+            <li>GDB support</li>
+            <li>LLDB code rewritten</li>
+        </ul>
+        <strong>1.1.0</strong>
+        <ul>
+            <li>GDB support</li>
+            <li>LLDB code rewritten</li>
+        </ul>
+        <strong>1.0.0</strong>        
+        <ul>
+            <li>Initial version</li>
         </ul>
         """.stripIndent()
 
