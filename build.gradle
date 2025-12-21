@@ -39,8 +39,7 @@ intellijPlatform {
     buildSearchableOptions = false
 
     pluginConfiguration {
-        id = "${group}.Qt6Renderer"
-        name = "Qt6 Renderer"
+        id = "${project.group}.${project.name}"
 
         description = """<pre>
         The plugin for pretty printing Qt types by CLion debugger.
@@ -95,7 +94,11 @@ intellijPlatform {
 }
 
 tasks.named(Tasks.PREPARE_SANDBOX, PrepareSandboxTask) {
-    from project.layout.projectDirectory.dir("qt6renderer/python")
-    include "**/*.py"
-    into it.pluginName.map { "$it/python" }
+    from(project.layout.projectDirectory.dir("qt6renderer/python/")) {
+        include "**/*.py"
+        into pluginName.map { "${it}/python" }
+        preserve {
+            include "**/*"
+        }
+    }
 }
