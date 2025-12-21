@@ -1,6 +1,10 @@
+import org.jetbrains.intellij.platform.gradle.TestFrameworkType
+import org.jetbrains.intellij.platform.gradle.tasks.PrepareSandboxTask
+import org.jetbrains.intellij.platform.gradle.Constants.Tasks
+
 plugins {
-    id "org.jetbrains.intellij" version "1.17.4"
     id "java"
+    id "org.jetbrains.intellij.platform" version "2.10.5"
 }
 
 group = "n.v.k"
@@ -8,54 +12,91 @@ version = hasProperty("buildVersion") ? buildVersion : "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+
+    intellijPlatform {
+        defaultRepositories()
+    }
 }
 
 dependencies {
+    intellijPlatform {
+        bundledPlugin "com.intellij.clion"
+        bundledPlugin "com.intellij.modules.cidr.debugger"
+        testFramework TestFrameworkType.Platform.INSTANCE
+    }
 }
 
-// See https://github.com/JetBrains/gradle-intellij-plugin/
-buildSearchableOptions.enabled = false
-intellij {
-    version = "2021.3.1"
-    type = "CL"
-    plugins = ["com.intellij.cidr.base", "com.intellij.clion"]
-    targetCompatibility = 11
+def targetIdeVersion = "2025.3.1"
+def clionLocalSandbox = System.getenv("QT6RENDERER_SANDBOX_IDE") //C:\Program Files\JetBrains\CLion 2025\
+
+if (clionLocalSandbox) {
+    logger.lifecycle "Using sandbox IDE at: ${clionLocalSandbox}"
+    dependencies.intellijPlatform.local clionLocalSandbox
+} else {
+    logger.lifecycle "Using the downloaded IDE: ${targetIdeVersion}"
+    dependencies.intellijPlatform.clion targetIdeVersion
 }
 
-patchPluginXml {
-    changeNotes = """
-      * 1.2.0
-      - QJson support for LLDB
-      - Minor render bug fixes
-      
-      * 1.1.1
-      - Minor render bug fixes
+intellijPlatform {
+    buildSearchableOptions = false
 
-      * 1.1.0
-      - GDB support
-      - LLDB code rewritten
-      
-      * 1.0.0
-      Initial version"""
-    sinceBuild = "213.6461"
-    untilBuild = ""
+    pluginConfiguration {
+        id = "n.v.k.Qt6Renderer"
+        name = "Qt6 Renderer"
+        description = """
+        The plugin for pretty printing Qt types by CLion debugger.
+        Supported Qt versions: 6.x.
+        Supported platforms: Windows, Linux.
+        Supported architectures: X64.
+        Supported debuggers: GDB, LLDB.
+        """.stripIndent()
+
+        changeNotes = """
+        * 1.2.0
+        - QJson support for LLDB
+        - Minor render bug fixes
+
+        * 1.1.1
+        - Minor render bug fixes
+
+        * 1.1.0
+        - GDB support
+        - LLDB code rewritten
+
+        * 1.0.0
+        Initial version
+        """.stripIndent()
+
+        ideaVersion {
+            sinceBuild = "213.6461"
+        }
+
+        vendor {
+            name = "Nikita Kobzev"
+            email = "win.accuracy@gmail.com"
+            url = "https://github.com/winseros"
+        }
+    }
+}
+def taskNameCopyPrettyPrinters = "copyPrettyPrinters"
+
+tasks.register(taskNameCopyPrettyPrinters, Copy) {
+    group = "Qt6Renderer"
+    configure {
+        def prepareSandboxTask = tasks.named(Tasks.PREPARE_SANDBOX, PrepareSandboxTask)
+        def pluginDirectoryProvider = prepareSandboxTask.flatMap { it.pluginDirectory }
+
+        dependsOn Tasks.PREPARE_SANDBOX
+        from project.layout.projectDirectory.dir("qt6renderer/python")
+        include "**/*.py"
+        into project.layout.buildDirectory.dir("${pluginDirectoryProvider.get()}/python").get()
+    }
 }
 
-task copyPrettyPrinters(type: Copy) {
-    dependsOn "prepareSandbox"
-    from project.layout.projectDirectory.dir("qt6renderer/python")
-    include "**/*.py"
-    into project.layout.buildDirectory.dir("idea-sandbox/plugins/Qt6Renderer/python").get()
+tasks.named(Tasks.BUILD_PLUGIN) {
+    dependsOn taskNameCopyPrettyPrinters
 }
 
-buildPlugin {
-    dependsOn "copyPrettyPrinters"
-}
-
-runIde {
-    dependsOn "copyPrettyPrinters"
-}
-
-test {
-    useJUnitPlatform()
+tasks.named(Tasks.RUN_IDE) {
+    dependsOn taskNameCopyPrettyPrinters
 }

@@ -1,5 +1,7 @@
 .idea/
 .gradle/
+.intellijPlatform/
+gradle.properties
 build/
 Pipfile
 Pipfile.lock
