@@ -42,18 +42,22 @@ intellijPlatform {
         id = "${project.group}.${project.name}"
         name = "Qt6 Renderer"
 
-        description = """<pre>
+        description = """
         The plugin for pretty printing Qt types by CLion debugger.
         <br>
         <uL>
             <li>Supported Qt versions: 6.x.</li>
             <li>Supported platforms: Windows, Linux.</li>
             <li>Supported architectures: X64.</li>
-            <li>Supported debuggers: GDB, LLDB.</pre></li>
+            <li>Supported debuggers: GDB, LLDB.</li>
         </ul>
         """.stripIndent()
 
         changeNotes = """
+        <strong>1.2.1</strong>
+        <ul>
+            <li>Fix QByteArray derived types display on mouse hover</li>
+        </ul>
         <strong>1.2.0</strong>
         <ul>
             <li>QJson support for LLDB</li>
